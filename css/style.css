@@ -230,22 +230,38 @@
       padding: 4rem;
   }
 
+
+
+ /* Header Background */
   #main {
       background: url('https://i.pinimg.com/originals/e8/75/19/e87519bb38b0ddada14207eb6d40f8aa.jpg') no-repeat center/cover;
   }
   
   #description h2{
     font-size: 2rem;
+    
   }
   
   
+
+  /* Header Title */
   .container h1{
       font-size: 3rem;
+      text-shadow: 0 0 10px #141212, 0 0 10px #0c0c0c;
+ }
+
+
+
+ /* Header desc */
+  .container h2{
+
+    text-shadow: 0 0 10px #141212, 0 0 10px #0c0c0c;
+
   }
 
   a {
     text-decoration: none;
-
+    
   }
 
   .btn {
