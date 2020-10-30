@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora&family=Poppins:ital,wght@1,200&display=swap');
 
 :root {
-  --primary-color: #b90415;
-  --primary-color-hover: #d3071b;
+  --primary-color: #707459;
+  --primary-color-hover: #3c5551;
   --secondary-color: #103063;
   --secondary-color-hover: #143f85;
   --light-color: #f4f4f4;
@@ -12,11 +12,12 @@
     box-sizing: border-box;
   }
 
+  /* Main body properties */
   body {
       font-family: 'PT Sans Narrow', sans-serif;
       background-color: #272525;
       color: #fff;
-      line-height: 2rem;
+      line-height: 4rem;
   }
   
   .animenu__btn {
@@ -45,7 +46,7 @@
   
   .animenu__btn--active .animenu__btn__bar {
     margin: 0;
-    position: absolute;
+    position: absolute; 
   }
   .animenu__btn--active .animenu__btn__bar:nth-child(1) {
     transform: rotate(45deg);
@@ -237,15 +238,13 @@
       background: url('https://i.pinimg.com/originals/e8/75/19/e87519bb38b0ddada14207eb6d40f8aa.jpg') no-repeat center/cover;
   }
   
-  #description h2{
-    font-size: 2rem;
-    
-  }
+ 
   
   
 
   /* Header Title */
   .container h1{
+    font-family: 'Lora', serif;
       font-size: 3rem;
       text-shadow: 0 0 10px #141212, 0 0 10px #0c0c0c;
  }
@@ -254,10 +253,12 @@
 
  /* Header desc */
   .container h2{
-
+    font-family: 'Lora', serif;
     text-shadow: 0 0 10px #141212, 0 0 10px #0c0c0c;
 
   }
+
+
 
   a {
     text-decoration: none;
@@ -265,6 +266,7 @@
   }
 
   .btn {
+      font-family: 'Poppins', sans-serif;
       padding: 1rem;
       color: #fff;
       display:inline-block;
