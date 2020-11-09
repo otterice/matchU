@@ -302,18 +302,27 @@
   }
 
 
+  /* Divider line below button */
   hr{
     height: 1px;
     width: 800px;
+
+    /* To adjust position relative to top of margin */
+    margin-top: 140px;
+    
     padding: 0;
     background-color: #707459;
     border: 0;
   }
 
 
-
+  /* Github Icon */
   img{
     display: block;
+
+    /* To adjust position relative to top of margin */
+    margin-top: 30px;
+
     margin-left: auto;
     margin-right: auto;
     width: 2%;
