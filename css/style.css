@@ -23,7 +23,7 @@
   .animenu__btn {
     display: none;
     cursor: pointer;
-    background-color: #111;
+    background-color: #272525;
     border: 0;
     padding: 10px;
     height: 40px;
@@ -75,8 +75,10 @@
     text-decoration: none;
   }
   
+  
+  /* Top Bar */
   .animenu__nav {
-    background-color: #111;
+    background-color: #272525;
   }
   .animenu__nav > li {
     position: relative;
