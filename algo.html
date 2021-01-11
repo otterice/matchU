@@ -2,14 +2,53 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
 
 	<title>Document</title>
 </head>
+
+<!--Top Bar-->
 <body>
+
+
+    <nav class="animenu" role="navigation" aria-label="Menu">
+        <button class="animenu__btn" type="button">
+          <span class="animenu__btn__bar"></span>
+          <span class="animenu__btn__bar"></span>
+          <span class="animenu__btn__bar"></span>
+        </button>
+      
+
+
+        <!--Top Menu -->
+        <ul class="animenu__nav">
+
+          <!--Home Bar-->
+          <li><a href="home.html">Home</a></li>
+          
+
+          <!--Archive Dropdown-->
+          <li>
+            <a href="#" class="animenu__nav__hasDropdown" aria-haspopup="true">Archive</a>
+            <ul class="animenu__nav__dropdown" aria-label="submenu" role="menu">
+              <li><a href="/archive_pages/fall.html" role="menuitem">FALL</a></li>
+              <li><a href="/archive_pages/winter.html" role="menuitem">WINTER</a></li>
+              <li><a href="/archive_pages/summer.html" role="menuitem">SUMMER</a></li>
+            </ul>
+          </li>
+
+          <!--About Bar-->
+          <li><a href="/closet.html">About</a></li>
+          
+
+        </ul>
+      </nav>
+
+
+    
 	<header>
         <h1>File API - FileReader</h1>
     </header>
@@ -18,7 +57,11 @@
         <input id="files" type="file" multiple/>
     </article>
 </body>
+
+
+
 <!--Creating the box-->
+
 <div class="boxed">
     <output id="result"></output>
 </div>
@@ -29,10 +72,13 @@ body{
     font-size: 12pt;
 }
 
+
+/* Style for header1 */
 header h1{
+    font-family: sans-serif; 
     font-size:12pt;
     color: #fff;
-    background-color: #1BA1E2;
+    background-color: #1a1616;
     padding: 20px;
 
 }
