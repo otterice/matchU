@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>Document</title>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
 
-    <!--Embeds custom font for use -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,200&display=swap" rel="stylesheet">
-    
-  </head>
+	<title>Document</title>
+</head>
 
 <!--Top Bar-->
 <body>
+
+
     <nav class="animenu" role="navigation" aria-label="Menu">
         <button class="animenu__btn" type="button">
           <span class="animenu__btn__bar"></span>
@@ -46,39 +47,57 @@
         </ul>
       </nav>
 
-      <!-- Banner -->
-      <div id="main" class="container">
-        <h1>MATCHU</h1>
-        <h2>CREATE SEAMLESSLY MATCHING OUTFITS THROUGH AN INTUITIVE INTERFACE.</h2>
-      </div>
-
-
-     
-
-    <!--Start Button-->
-    <div id="start" class="container">
-        <a href="clothes_select.html" class="btn btn-primary">START</a>
-        
-    </div>
-    
-
-    <!--Divider Line-->
-    <hr>
-
-    <!--Github Icon-->
-    <a href="https://github.com/otterice/matchU" target="_blank">
-        
-      <img alt="Github" src="/assets/github-logo.png">
-    
-    
-    </a>
-
 
     
-    
 
-
-
-    <script src="js/main.js"></script>
+    <article>
+        <label for="files">Select multiple files: </label>
+        <input id="files" type="file" multiple/>
+    </article>
 </body>
+
+
+
+<!--Creating the box-->
+
+<div class="boxed">
+    <output id="result"></output>
+</div>
+<button id="send">Submit</button>
+<style>
+body{
+    font-family: 'Segoe UI';
+    font-size: 12pt;
+}
+
+
+
+
+article
+{
+    width: 100%;
+    margin:auto;
+    margin-top:10px;
+}
+
+
+.thumbnail{
+
+    height: 100px;
+    width: 100px;
+    padding-right: 30px;
+    float: left;
+    margin: 10px;
+}
+
+/* Clothes box style */
+.boxed {
+    height: 100px;
+    width: 100%;
+    position: relative;
+    border: 1px solid rgb(247, 255, 247) ;
+}
+
+</style>
+<script type ="text/javascript" src="js/algo.js"></script>
 </html>

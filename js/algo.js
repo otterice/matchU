@@ -1,113 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
-
-	<title>Document</title>
-</head>
-
-<!--Top Bar-->
-<body>
-
-
-    <nav class="animenu" role="navigation" aria-label="Menu">
-        <button class="animenu__btn" type="button">
-          <span class="animenu__btn__bar"></span>
-          <span class="animenu__btn__bar"></span>
-          <span class="animenu__btn__bar"></span>
-        </button>
-      
-
-
-        <!--Top Menu -->
-        <ul class="animenu__nav">
-
-          <!--Home Bar-->
-          <li><a href="home.html">Home</a></li>
-          
-
-          <!--Archive Dropdown-->
-          <li>
-            <a href="#" class="animenu__nav__hasDropdown" aria-haspopup="true">Archive</a>
-            <ul class="animenu__nav__dropdown" aria-label="submenu" role="menu">
-              <li><a href="/archive_pages/fall.html" role="menuitem">FALL</a></li>
-              <li><a href="/archive_pages/winter.html" role="menuitem">WINTER</a></li>
-              <li><a href="/archive_pages/summer.html" role="menuitem">SUMMER</a></li>
-            </ul>
-          </li>
-
-          <!--About Bar-->
-          <li><a href="/closet.html">About</a></li>
-          
-
-        </ul>
-      </nav>
-
-
-    
-	<header>
-        <h1>File API - FileReader</h1>
-    </header>
-    <article>
-        <label for="files">Select multiple files: </label>
-        <input id="files" type="file" multiple/>
-    </article>
-</body>
-
-
-
-<!--Creating the box-->
-
-<div class="boxed">
-    <output id="result"></output>
-</div>
-<button id="send">Submit</button>
-<style>
-body{
-    font-family: 'Segoe UI';
-    font-size: 12pt;
-}
-
-
-/* Style for header1 */
-header h1{
-    font-family: sans-serif; 
-    font-size:12pt;
-    color: #fff;
-    background-color: #1a1616;
-    padding: 20px;
-
-}
-article
-{
-    width: 100%;
-    margin:auto;
-    margin-top:10px;
-}
-
-
-.thumbnail{
-
-    height: 100px;
-    width: 100px;
-    padding-right: 30px;
-    float: left;
-    margin: 10px;
-}
-
-.boxed {
-    height: 100px;
-    width: 100%;
-    position: relative;
-    border: 1px solid green ;
-}
-
-</style>
-<script>
 //global variable for selecting type
 var selectNum = 0;
 var userCol = []; 
@@ -150,12 +40,13 @@ window.onload = function(){
                 var picReader = new FileReader();				                
                 picReader.addEventListener("load",function(event){                    
                     var picFile = event.target;
-					var div = document.createElement("div");
+                    var div = document.createElement("div");
 					div.innerHTML = "<img class='thumbnail' src='" + picFile.result + "'" +
 					"title='" + picFile.name + "'id='myImg" + j + "'/>";
                     createSelect();
 					j++;
-                    output.insertBefore(div, null);                               
+                    output.insertBefore(div, null);   
+                                               
                 });                
                  //Read the image
                 picReader.readAsDataURL(file);       				
@@ -177,6 +68,7 @@ send.onclick = function(){
         var img = document.getElementById('myImg' + i);
         var color = colorThief.getColor(img);
         userCol[i] = color; 
+        
     }
 
     for (var i = 0; i < selectNum; i++) {
@@ -190,5 +82,3 @@ send.onclick = function(){
         console.log(userType[i]);
     }
 }
-    </script>
-</html>
