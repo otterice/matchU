@@ -16,12 +16,15 @@
     <article>
         <label for="files">Select multiple files: </label>
         <input id="files" type="file" multiple/>
-        <output id="result">
     </article>
 </body>
-<button id="send">submit</button>
+<!--Creating the box-->
+<div class="boxed">
+    <output id="result"></output>
+</div>
+<button id="send">Submit</button>
 <style>
-	body{
+body{
     font-family: 'Segoe UI';
     font-size: 12pt;
 }
@@ -35,7 +38,7 @@ header h1{
 }
 article
 {
-    width: 80%;
+    width: 100%;
     margin:auto;
     margin-top:10px;
 }
@@ -44,7 +47,17 @@ article
 .thumbnail{
 
     height: 100px;
-    margin: 10px;    
+    width: 100px;
+    padding-right: 30px;
+    float: left;
+    margin: 10px;
+}
+
+.boxed {
+    height: 100px;
+    width: 100%;
+    position: relative;
+    border: 1px solid green ;
 }
 
 </style>
@@ -74,71 +87,39 @@ function createSelect() {
 //global variable for checking how many images were put in.
 var j = 0;
 
-//
-window.onload = function(){
-    
+window.onload = function(){    
     //Check File API support
     if(window.File && window.FileList && window.FileReader)
     {
-        var filesInput = document.getElementById("files");
-        
-        filesInput.addEventListener("change", function(event){
-            
+        var filesInput = document.getElementById("files");        
+        filesInput.addEventListener("change", function(event){           
             var files = event.target.files; //FileList object
-            var output = document.getElementById("result");
-            
+            var output = document.getElementById("result");           
             for(var i = 0; i< files.length; i++)
             {
-                var file = files[i];
-                
+                var file = files[i];                
                 //Only pics
                 if(!file.type.match('image'))
-                  continue;
-                
-                var picReader = new FileReader();
-				
-                
-                picReader.addEventListener("load",function(event){
-                    
+                  continue;                
+                var picReader = new FileReader();				                
+                picReader.addEventListener("load",function(event){                    
                     var picFile = event.target;
-					
-
 					var div = document.createElement("div");
-
-					
-
 					div.innerHTML = "<img class='thumbnail' src='" + picFile.result + "'" +
 					"title='" + picFile.name + "'id='myImg" + j + "'/>";
-
                     createSelect();
-
-
-                    
 					j++;
-                    output.insertBefore(div,null);  
-                    
-                              
-                
-                });
-                
+                    output.insertBefore(div, null);                               
+                });                
                  //Read the image
-                picReader.readAsDataURL(file);
-
-                    
-        				
-            }
-
-			                        
-           
+                picReader.readAsDataURL(file);       				
+            }           
         });
     }
     else
     {
         console.log("Your browser does not support File API");
-    }
-    
-    
-    
+    }       
 }
 
 var send = document.getElementById("send");
@@ -163,8 +144,5 @@ send.onclick = function(){
         console.log(userType[i]);
     }
 }
-
-
-
     </script>
 </html>
