@@ -51,19 +51,29 @@
     
 
     <article>
-        <label for="files">Select multiple files: </label>
-        <input id="files" type="file" multiple/>
+        <label for="files">Insert shirts: </label>
+        <input id="shirtsFile" type="file" multiple/>
     </article>
-</body>
-
-
-
-<!--Creating the box-->
+    <!--Creating the box-->
 
 <div class="boxed">
-    <output id="result"></output>
+  <output id="result"></output>
 </div>
-<button id="send">Submit</button>
+
+<article>
+  <label for="files">Insert pants: </label>
+  <input id="pantsFile" type="file" multiple/>
+</article>
+
+<div class="boxed">
+  <output id="result2"></output>
+</div>
+
+<div class="submitBtn">
+  <button id="send">Submit</button>
+</div>
+
+</body>
 <style>
 body{
     font-family: 'Segoe UI';
@@ -83,8 +93,8 @@ article
 
 .thumbnail{
 
-    height: 100px;
-    width: 100px;
+    height: 200px;
+    width: 200px;
     padding-right: 30px;
     float: left;
     margin: 10px;
@@ -92,10 +102,16 @@ article
 
 /* Clothes box style */
 .boxed {
-    height: 100px;
+    height: 225px;
+    padding-bottom: 100px;
     width: 100%;
     position: relative;
     border: 1px solid rgb(247, 255, 247) ;
+}
+
+.submitBtn {
+    position:relative;
+    padding-top:50px;
 }
 
 </style>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--idk what this does, go back later-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<html>
+    <head>
+        <body>
+        <form>
+           <input id="file" multiple type="file" name="file[]" multiple/>
+           <div id="imagePreview"></div>
+           <button type="button" id="btn">send</button>
+        </form>
+        </body>
+    </head>
+</html>
+
+<style>
+    img {
+        padding:5px;
+        height: 200px;
+        width: 200px;
+        border:3px solid silver;
+    }
+</style>
+
+<script>
+    //keep track of how many images are put in
+    var j = 0;
+    var inputLocalFont = document.getElementById("file");
+    var pictures = [];
+    inputLocalFont.addEventListener("change", previewImages, false);
+
+    function previewImages() {
+        var fileList = this.files;
+        var anyWindow = window.URL || window.webkitURL;
+        for(var i = 0; i < fileList.length; i++) {
+            var objectUrl = anyWindow.createObjectURL(fileList[i]);
+            $('#imagePreview').append('<img src="' + objectUrl + '" />');
+            window.URL.revokeObjectURL(fileList[i]);
+        }
+    }
+    
+    var pullfiles = function() {
+        var fileInput = document.querySelector("#file");
+        var files = fileInput.files;
+        //cache files.length
+        var fl = files.length;
+        var i = 0;
+
+        while (i < fl) {
+            var file = files[i];
+            pictures[j] = file;
+            alert(file.name);
+            i++;
+            j++;
+        }
+    }
+
+    document.getElementById('btn').onclick= function() {
+        for (var i = 0; i < j; i++) {
+            console.log(pictures[i]);
+        }
+    }
+    
+    document.querySelector("#file").onchange=pullfiles;
+    
+</script>
