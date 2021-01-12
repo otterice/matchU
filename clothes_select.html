@@ -3,7 +3,8 @@
 <head>
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css"> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
 
@@ -51,13 +52,13 @@
     
 
     <article>
-        <label for="files">Insert shirts: </label>
-        <input id="shirtsFile" type="file" multiple/>
+      <label>Insert Shirts: </label>
+        <input id="file" multiple type="file" name="file[]" multiple/>
     </article>
     <!--Creating the box-->
 
 <div class="boxed">
-  <output id="result"></output>
+  <div id="imagePreview"></div>
 </div>
 
 <article>
@@ -70,18 +71,16 @@
 </div>
 
 <div class="submitBtn">
-  <button id="send">Submit</button>
+  <button type="button" id="btn">send</button>
 </div>
 
 </body>
 <style>
+
 body{
     font-family: 'Segoe UI';
     font-size: 12pt;
 }
-
-
-
 
 article
 {
@@ -90,19 +89,17 @@ article
     margin-top:10px;
 }
 
-
-.thumbnail{
-
-    height: 200px;
-    width: 200px;
-    padding-right: 30px;
-    float: left;
-    margin: 10px;
+img {
+  height: 150px;
+  width: 150px;
+  border: 2px solid silver;
+  margin-top:25px;
+  margin-left:10px;
 }
 
 /* Clothes box style */
 .boxed {
-    height: 225px;
+    height: 200px;
     padding-bottom: 100px;
     width: 100%;
     position: relative;

@@ -1,3 +1,49 @@
+//keep track of how many images are put in
+var j = 0;
+
+var pictures = [];
+var colorAndBlob = [];
+
+var inputLocalFont = document.getElementById("file");
+inputLocalFont.addEventListener("change", previewImages, false);
+
+//shows the thumbnail of the image
+function previewImages() {
+    var fileList = this.files;
+    var anyWindow = window.URL || window.webkitURL;
+    for(var i = 0; i < fileList.length; i++) {
+        var objectUrl = anyWindow.createObjectURL(fileList[i]);
+        //save the url of the object to an array, so we can return to it later
+        pictures[j] = objectUrl;
+        $('#imagePreview').append('<img src="' + objectUrl + '"' + "id='myImg" + j + "'/>");
+        j++;
+        window.URL.revokeObjectURL(fileList[i]);
+    }
+}
+
+//currently this function dupes images if you click the submit btn again
+//but it shouldnt be an issue since
+//we should redirect the user to another page when they click the button
+//clicking the button will call colorthief and create a dict of all the items in it
+document.getElementById('btn').onclick= function() {
+    var anyWindow = window.URL || window.webkitURL;
+    var colorThief = new ColorThief();
+    for (var i = 0; i < j; i++) {
+        //finds the id of myImg then the index
+        var img = document.getElementById('myImg' + i);
+        //call colorthief to get array of most common color
+        var color = colorThief.getColor(img);
+        //push the data to a dict
+        colorAndBlob.push({blob: pictures[i], value: color});
+    }
+    console.log(colorAndBlob);
+}
+
+//document.querySelector("#file").onchange=pullfiles;
+
+
+
+/*
 //global variable for selecting type
 var selectNum = 0;
 var userCol = []; 
@@ -33,7 +79,6 @@ send.onclick = function(){
         var img = document.getElementById('myImg' + i);
         var color = colorThief.getColor(img);
         userCol[i] = color; 
-        
     }
 
     for (var i = 0; i < selectNum; i++) {
@@ -90,4 +135,4 @@ function insertImage(type, outputResult) {
     {
         console.log("Your browser does not support File API");
     }     
-}
+}*/

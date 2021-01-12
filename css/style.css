@@ -316,23 +316,6 @@
     background-color: #707459;
     border: 0;
   }
-
-
-  /* Github Icon */
-  img{
-    display: block;
-
-    /* Adjusts position relative to top of margin */
-    margin-top: 30px;
-
-    /* Centers image between LR margins */
-    margin-left: auto;
-    margin-right: auto;
-    width: 2.25%;
-  }
-
-  
-
  
   .next{
     border-radius: 10px 0px 0px 10px;

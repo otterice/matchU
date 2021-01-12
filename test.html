@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <!--idk what this does, go back later-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
 <html>
     <head>
         <body>
@@ -25,42 +26,44 @@
 <script>
     //keep track of how many images are put in
     var j = 0;
-    var inputLocalFont = document.getElementById("file");
+
     var pictures = [];
+    var colorAndBlob = [];
+
+    var inputLocalFont = document.getElementById("file");
     inputLocalFont.addEventListener("change", previewImages, false);
 
+    //shows the thumbnail of the image
     function previewImages() {
         var fileList = this.files;
         var anyWindow = window.URL || window.webkitURL;
         for(var i = 0; i < fileList.length; i++) {
             var objectUrl = anyWindow.createObjectURL(fileList[i]);
-            $('#imagePreview').append('<img src="' + objectUrl + '" />');
+            //save the url of the object to an array, so we can return to it later
+            pictures[j] = objectUrl;
+            $('#imagePreview').append('<img src="' + objectUrl + '"' + "id='myImg" + j + "'/>");
+            j++;
             window.URL.revokeObjectURL(fileList[i]);
         }
     }
-    
-    var pullfiles = function() {
-        var fileInput = document.querySelector("#file");
-        var files = fileInput.files;
-        //cache files.length
-        var fl = files.length;
-        var i = 0;
 
-        while (i < fl) {
-            var file = files[i];
-            pictures[j] = file;
-            alert(file.name);
-            i++;
-            j++;
-        }
-    }
-
+    //currently this function dupes images if you click the submit btn again
+    //but it shouldnt be an issue since
+    //we should redirect the user to another page when they click the button
+    //clicking the button will call colorthief and create a dict of all the items in it
     document.getElementById('btn').onclick= function() {
+        var anyWindow = window.URL || window.webkitURL;
+        var colorThief = new ColorThief();
         for (var i = 0; i < j; i++) {
-            console.log(pictures[i]);
+            //finds the id of myImg then the index
+            var img = document.getElementById('myImg' + i);
+            //call colorthief to get array of most common color
+            var color = colorThief.getColor(img);
+            //push the data to a dict
+            colorAndBlob.push({blob: pictures[i], value: color});
         }
+        console.log(colorAndBlob);
     }
     
-    document.querySelector("#file").onchange=pullfiles;
-    
+    //document.querySelector("#file").onchange=pullfiles;
 </script>
