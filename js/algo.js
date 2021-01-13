@@ -1,11 +1,24 @@
 //keep track of how many images are put in
-var j = 0;
+var pantsIndex = 0;
+var shirtIndex = 0;
+var changeDictsValue = 1;
 
-var pictures = [];
-var colorAndBlob = [];
+var imagePreview = '#imagePreview';
+//input the blobs of the clothes
+var shirtPics = [];
+var pantsPics = [];
 
-var inputLocalFont = document.getElementById("file");
+//get the value of the blob and key/color
+var shirtsDict = [];
+var pantsDict = [];
+
+//gets the shirt files
+var inputLocalFont = document.getElementById('file');
 inputLocalFont.addEventListener("change", previewImages, false);
+
+//gets the pants files
+var inputLocalFont2 = document.getElementById('pantsFile');
+inputLocalFont2.addEventListener("change", previewImages, false);
 
 //shows the thumbnail of the image
 function previewImages() {
@@ -14,10 +27,35 @@ function previewImages() {
     for(var i = 0; i < fileList.length; i++) {
         var objectUrl = anyWindow.createObjectURL(fileList[i]);
         //save the url of the object to an array, so we can return to it later
-        pictures[j] = objectUrl;
-        $('#imagePreview').append('<img src="' + objectUrl + '"' + "id='myImg" + j + "'/>");
-        j++;
+        if (changeDictsValue == 1) {
+            var imgType = 'id="myShirtsImg';
+            shirtPics[shirtIndex] = objectUrl;
+            imgType = imgType.concat(shirtIndex + '"');
+            $(imagePreview).append('<img src="' + objectUrl + '"' + imgType + "/>");
+            shirtIndex++;
+        }
+        else if (changeDictsValue == 2) {
+            var imgType = 'id="myPantsImg';
+            pantsPics[pantsIndex] = objectUrl;
+            imgType = imgType.concat(pantsIndex + '"');
+            $(imagePreview).append('<img src="' + objectUrl + '"' + imgType + "/>");
+            pantsIndex++;
+        }
+        
         window.URL.revokeObjectURL(fileList[i]);
+    }
+}
+
+function changeID(imagePreview, id) {
+    this.imagePreview = imagePreview;
+}
+
+function changeDicts(num) {
+    if(num == 1) {
+        changeDictsValue = 1;
+    }
+    else {
+        changeDictsValue = 2;
     }
 }
 
@@ -28,111 +66,23 @@ function previewImages() {
 document.getElementById('btn').onclick= function() {
     var anyWindow = window.URL || window.webkitURL;
     var colorThief = new ColorThief();
-    for (var i = 0; i < j; i++) {
+    for (var i = 0; i < shirtPics.length; i++) {
         //finds the id of myImg then the index
-        var img = document.getElementById('myImg' + i);
+        var img = document.getElementById('myShirtsImg' + i);
         //call colorthief to get array of most common color
         var color = colorThief.getColor(img);
         //push the data to a dict
-        colorAndBlob.push({blob: pictures[i], value: color});
+        shirtsDict.push({blob: shirtPics[i], value: color});
     }
-    console.log(colorAndBlob);
-}
 
-//document.querySelector("#file").onchange=pullfiles;
-
-
-
-/*
-//global variable for selecting type
-var selectNum = 0;
-var userCol = []; 
-var userType = [];
-var i = 0;
-
-//creates select lists to select a clothing type
-function createSelect() {
-    var myParent = document.body;
-    var arr = ["Shirts", "Pants", "Shoes"];
-    var selectList = document.createElement("select");
-    selectList.id = "mySelect" + selectNum;
-    myParent.appendChild(selectList);
-
-    for (var i = 0; i < arr.length; i++) {
-        var option = document.createElement("option");
-        option.value = arr[i];
-        option.text = arr[i];
-        selectList.appendChild(option);
-    }
-    selectNum++;
-}
-
-//global variable for checking how many images were put in.
-var j = 0;
-
-var send = document.getElementById("send");
-
-
-send.onclick = function(){
-    var colorThief = new ColorThief();	
-    for (var i = 0; i < j; i++) {
-        var img = document.getElementById('myImg' + i);
+    for (var i = 0; i < pantsPics.length; i++) {
+        //finds the id of myImg then the index
+        var img = document.getElementById('myPantsImg' + i);
+        //call colorthief to get array of most common color
         var color = colorThief.getColor(img);
-        userCol[i] = color; 
+        //push the data to a dict
+        pantsDict.push({blob: pantsPics[i], value: color});
     }
-
-    for (var i = 0; i < selectNum; i++) {
-        var choice = document.getElementById("mySelect" + i);
-        var strUser = choice.options[choice.selectedIndex].text;
-        userType[i] = strUser; 
-    }
-
-    for (var i = 0; i < j; i++) {
-        console.log(userCol[i]);
-        console.log(userType[i]);
-    }
+    console.log(shirtsDict);
+    console.log(pantsDict);
 }
-
-document.getElementById('shirtsFile').onclick = function() {
-      insertImage('shirtsFile', 'result');
-}
-
-document.getElementById('pantsFile').onclick = function() {
-    insertImage('pantsFile', 'result2');
-}
-
-//Inserts the image into the database/lets users see what images are put in.
-function insertImage(type, outputResult) {
-    if(window.File && window.FileList && window.FileReader)
-    {
-        var filesInput = document.getElementById(type);        
-        filesInput.addEventListener("change", function(event){           
-        var files = event.target.files; //FileList object
-        var output = document.getElementById(outputResult);           
-        //for(var i = 0; i < files.length; i++)
-        //{
-            var file = files[i];         
-            //Only pics
-            //if(!file.type.match('image'))
-            //    continue;                
-            var picReader = new FileReader();				                
-            picReader.addEventListener("load",function(event){                    
-                var picFile = event.target;
-                var div = document.createElement("div");
-                //Create new image div
-                div.innerHTML = "<img class='thumbnail' src='" + picFile.result + "'" +
-                "title='" + picFile.name + "'id='myImg" + j + "'/>";
-                //createSelect();
-                j++;
-                output.insertBefore(div, null);                                               
-            });                
-                //Read the image
-            picReader.readAsDataURL(file);       				
-        //}           
-        });
-    }
-    else
-    {
-        console.log("Your browser does not support File API");
-    }     
-}*/

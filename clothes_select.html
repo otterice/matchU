@@ -53,7 +53,7 @@
 
     <article>
       <label>Insert Shirts: </label>
-        <input id="file" multiple type="file" name="file[]" multiple/>
+        <input id="file" multiple type="file" name="file[]" multiple onclick="changeID(imagePreview);changeDicts(1);"/>
     </article>
     <!--Creating the box-->
 
@@ -62,12 +62,12 @@
 </div>
 
 <article>
-  <label for="files">Insert pants: </label>
-  <input id="pantsFile" type="file" multiple/>
+  <label>Insert pants: </label>
+  <input id="pantsFile" multiple type="file" name="file[]" multiple onclick = "changeID(imagePreviewPants);changeDicts(2)"/>
 </article>
 
 <div class="boxed">
-  <output id="result2"></output>
+  <output id="imagePreviewPants"></output>
 </div>
 
 <div class="submitBtn">
