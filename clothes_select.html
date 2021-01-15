@@ -3,10 +3,7 @@
 <head>
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css"> 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+    <link rel="stylesheet" href="css/style.css">
 
 	<title>Document</title>
 </head>
@@ -15,47 +12,43 @@
 <body>
 
 
-    <nav class="animenu" role="navigation" aria-label="Menu">
-        <button class="animenu__btn" type="button">
-          <span class="animenu__btn__bar"></span>
-          <span class="animenu__btn__bar"></span>
-          <span class="animenu__btn__bar"></span>
-        </button>
+<nav class="animenu" role="navigation" aria-label="Menu">
+    <button class="animenu__btn" type="button">
+      <span class="animenu__btn__bar"></span>
+      <span class="animenu__btn__bar"></span>
+      <span class="animenu__btn__bar"></span>
+    </button>
+
+    <!--Top Menu -->
+    <ul class="animenu__nav">
+
+    <!--Home Bar-->
+    <li><a href="home.html">Home</a></li>
       
-
-
-        <!--Top Menu -->
-        <ul class="animenu__nav">
-
-          <!--Home Bar-->
-          <li><a href="home.html">Home</a></li>
-          
-
-          <!--Archive Dropdown-->
-          <li>
-            <a href="#" class="animenu__nav__hasDropdown" aria-haspopup="true">Archive</a>
-            <ul class="animenu__nav__dropdown" aria-label="submenu" role="menu">
-              <li><a href="/archive_pages/fall.html" role="menuitem">FALL</a></li>
-              <li><a href="/archive_pages/winter.html" role="menuitem">WINTER</a></li>
-              <li><a href="/archive_pages/summer.html" role="menuitem">SUMMER</a></li>
-            </ul>
-          </li>
-
-          <!--About Bar-->
-          <li><a href="/closet.html">About</a></li>
-          
-
-        </ul>
-      </nav>
+    <!--Archive Dropdown-->
+    <li>
+      <a href="#" class="animenu__nav__hasDropdown" aria-haspopup="true">Archive</a>
+      <ul class="animenu__nav__dropdown" aria-label="submenu" role="menu">
+        <li><a href="/archive_pages/fall.html" role="menuitem">FALL</a></li>
+        <li><a href="/archive_pages/winter.html" role="menuitem">WINTER</a></li>
+        <li><a href="/archive_pages/summer.html" role="menuitem">SUMMER</a></li>
+      </ul>
+    </li>
+      <!--About Bar-->
+      <li><a href="/closet.html">About</a></li>
+    </ul>
+</nav>
 
 
     
 
-    <article>
-      <label>Insert Shirts: </label>
-        <input id="file" multiple type="file" name="file[]" multiple onclick="changeID(imagePreview);changeDicts(1);"/>
-    </article>
-    <!--Creating the box-->
+<article>
+  <label>Insert Shirts: </label>
+    <input id="file" multiple type="file" name="file[]" multiple onclick="changeID('imagePreview');"/>
+</article>
+
+
+<!--Creating the box-->
 
 <div class="boxed">
   <div id="imagePreview"></div>
@@ -63,7 +56,7 @@
 
 <article>
   <label>Insert pants: </label>
-  <input id="pantsFile" multiple type="file" name="file[]" multiple onclick = "changeID(imagePreviewPants);changeDicts(2)"/>
+  <input id="pantsFile" multiple type="file" name="file[]" multiple onclick = "changeID('imagePreviewPants');"/>
 </article>
 
 <div class="boxed">
@@ -75,6 +68,9 @@
 </div>
 
 </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
 <style>
 
 body{

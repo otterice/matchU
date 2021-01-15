@@ -1,12 +1,6 @@
-//keep track of how many images are put in
-var pantsIndex = 0;
-var shirtIndex = 0;
-var changeDictsValue = 1;
+var img = new Image();
 
-var imagePreview = '#imagePreview';
-//input the blobs of the clothes
-var shirtPics = [];
-var pantsPics = [];
+var imagePreview = 'imagePreview';
 
 //get the value of the blob and key/color
 var shirtsDict = [];
@@ -24,65 +18,32 @@ inputLocalFont2.addEventListener("change", previewImages, false);
 function previewImages() {
     var fileList = this.files;
     var anyWindow = window.URL || window.webkitURL;
+    var colorThief = new ColorThief();
     for(var i = 0; i < fileList.length; i++) {
         var objectUrl = anyWindow.createObjectURL(fileList[i]);
-        //save the url of the object to an array, so we can return to it later
-        if (changeDictsValue == 1) {
-            var imgType = 'id="myShirtsImg';
-            shirtPics[shirtIndex] = objectUrl;
-            imgType = imgType.concat(shirtIndex + '"');
-            $(imagePreview).append('<img src="' + objectUrl + '"' + imgType + "/>");
-            shirtIndex++;
-        }
-        else if (changeDictsValue == 2) {
-            var imgType = 'id="myPantsImg';
-            pantsPics[pantsIndex] = objectUrl;
-            imgType = imgType.concat(pantsIndex + '"');
-            $(imagePreview).append('<img src="' + objectUrl + '"' + imgType + "/>");
-            pantsIndex++;
-        }
-        
-        window.URL.revokeObjectURL(fileList[i]);
+        $('#' + imagePreview).append('<img src="' + objectUrl + '"' + "/>");
+        img.src = objectUrl;
+        window.URL.revokeObjectURL(fileList[i]);       
     }
+}
+
+//when the image loads in, call colorthief and input it into a dict with its img.src and color
+img.onload = function() {
+  var colorThief = new ColorThief;
+  var color = colorThief.getColor(img);
+  console.log(imagePreview);
+  if (imagePreview == "imagePreview") {
+    shirtsDict.push({blob: img.src, value: color});
+    console.log(shirtsDict);
+  }
+  else if (imagePreview == "imagePreviewPants") {
+    pantsDict.push({blob: img.src, value:color});
+    console.log(pantsDict);
+  }
+  
+  img.src = "";
 }
 
 function changeID(imagePreview, id) {
     this.imagePreview = imagePreview;
-}
-
-function changeDicts(num) {
-    if(num == 1) {
-        changeDictsValue = 1;
-    }
-    else {
-        changeDictsValue = 2;
-    }
-}
-
-//currently this function dupes images if you click the submit btn again
-//but it shouldnt be an issue since
-//we should redirect the user to another page when they click the button
-//clicking the button will call colorthief and create a dict of all the items in it
-document.getElementById('btn').onclick= function() {
-    var anyWindow = window.URL || window.webkitURL;
-    var colorThief = new ColorThief();
-    for (var i = 0; i < shirtPics.length; i++) {
-        //finds the id of myImg then the index
-        var img = document.getElementById('myShirtsImg' + i);
-        //call colorthief to get array of most common color
-        var color = colorThief.getColor(img);
-        //push the data to a dict
-        shirtsDict.push({blob: shirtPics[i], value: color});
-    }
-
-    for (var i = 0; i < pantsPics.length; i++) {
-        //finds the id of myImg then the index
-        var img = document.getElementById('myPantsImg' + i);
-        //call colorthief to get array of most common color
-        var color = colorThief.getColor(img);
-        //push the data to a dict
-        pantsDict.push({blob: pantsPics[i], value: color});
-    }
-    console.log(shirtsDict);
-    console.log(pantsDict);
 }
