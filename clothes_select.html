@@ -44,23 +44,26 @@
 
 <article>
   <label>Insert Shirts: </label>
-    <input id="file" multiple type="file" name="file[]" multiple onclick="changeID('imagePreview');"/>
+    <input id="file" multiple type="file" name="file[]" multiple onclick="changeID('imagePreview', 1);"/>
 </article>
 
 
 <!--Creating the box-->
-
+<div class="shirtsBox">
 <div class="boxed">
   <div id="imagePreview"></div>
+</div>
 </div>
 
 <article>
   <label>Insert pants: </label>
-  <input id="pantsFile" multiple type="file" name="file[]" multiple onclick = "changeID('imagePreviewPants');"/>
+  <input id="pantsFile" multiple type="file" name="file[]" multiple onclick = "changeID('imagePreviewPants', 2);"/>
 </article>
 
+<div class="pantsBox">
 <div class="boxed">
   <output id="imagePreviewPants"></output>
+</div>
 </div>
 
 <div class="submitBtn">
@@ -113,7 +116,7 @@ img {
   margin: 10px 10px 0 0;
 }
 
-.remove {
+.remove1, .remove2 {
   display: block;
   background: #444;
   border: 1px solid black;
