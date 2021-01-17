@@ -1,0 +1,28 @@
+{
+  "name": "matchU",
+  "version": "1.0.0",
+  "description": "WebApp to be written in Javascript designed to help users create outfits based on complementary/contrasting colors.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/otterice/matchU.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/otterice/matchU/issues"
+  },
+  "homepage": "https://github.com/otterice/matchU#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cheerio": "^1.0.0-rc.5",
+    "puppeteer": "^5.5.0",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.6",
+    "requirejs": "^2.3.6"
+  }
+}

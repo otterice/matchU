@@ -294,8 +294,7 @@
 
   button {
     padding: 20px;
-    border: none;
-    background: #38f;
+    background: rgb(92, 20, 12);
     font-size: 30px;
     color: white;
     position: absolute;
