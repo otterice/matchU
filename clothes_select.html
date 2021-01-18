@@ -23,7 +23,7 @@
     <ul class="animenu__nav">
 
     <!--Home Bar-->
-    <li><a href="home.html">Home</a></li>
+    <li><a href="index.html">Home</a></li>
       
     <!--Archive Dropdown-->
     <li>
@@ -49,22 +49,22 @@
 
 
 <!--Creating the box-->
-<div class="shirtsBox">
+
 <div class="boxed">
   <div id="imagePreview"></div>
 </div>
-</div>
+
 
 <article>
   <label>Insert pants: </label>
   <input id="pantsFile" multiple type="file" name="file[]" multiple onclick = "changeID('imagePreviewPants', 2);"/>
 </article>
 
-<div class="pantsBox">
+
 <div class="boxed">
   <output id="imagePreviewPants"></output>
 </div>
-</div>
+
 
 <div class="submitBtn">
   <button type="button" id="btn">send</button>
@@ -92,7 +92,7 @@ article
 .boxed {
     height: 300px;
     padding-bottom: 100px;
-    width: 100%;
+    width: 300px;
     position: relative;
     border: 1px solid rgb(247, 255, 247) ;
 }

@@ -1,4 +1,6 @@
 var img = new Image();
+var boxWidthTop = "300px";
+var boxWidthBot = "300px";
 
 /*indexes for the dicts, 1 is for shirts, 2 for pants*/
 var index1 = 0;
@@ -36,7 +38,8 @@ function previewImages() {
     }
 }
 
-//when the image loads in, call colorthief and input it into a dict with its img.src and color
+
+
 img.onload = function() {
   var colorThief = new ColorThief;
   var color = colorThief.getColor(img);
@@ -44,10 +47,15 @@ img.onload = function() {
   if (imagePreview == "imagePreview") {
     shirtsDict.push({type: 'shirt', blob: img.src, value:color});
     console.log(shirtsDict);
+    boxWidthTop = (parseInt(boxWidthTop.replace(/px/, "")) + 100) + "px";
+    document.getElementsByClassName("boxed")[0].style.width = boxWidthTop;
+    
   }
   else if (imagePreview == "imagePreviewPants") {
     pantsDict.push({type: 'pants', blob: img.src, value:color});
     console.log(pantsDict);
+    boxWidthBot = (parseInt(boxWidthBot.replace(/px/, "")) + 100) + "px";
+    document.getElementsByClassName("boxed")[1].style.width = boxWidthBot;
   }
 }        
 
